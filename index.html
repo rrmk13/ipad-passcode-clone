@@ -2,25 +2,30 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>iPad風パスコード</title>
   <style>
     body {
-      font-family: sans-serif;
-      text-align: center;
+      font-family: 'Arial', sans-serif;
       background-color: #f0f0f0;
-      padding-top: 100px;
+      text-align: center;
+      padding-top: 80px;
     }
+
     .code-display {
       font-size: 32px;
       letter-spacing: 10px;
       margin-bottom: 20px;
+      transition: all 0.3s ease-in-out;
     }
+
     .pad {
       display: grid;
       grid-template-columns: repeat(3, 80px);
       gap: 10px;
       justify-content: center;
     }
+
     .pad button {
       font-size: 24px;
       padding: 20px;
@@ -28,11 +33,44 @@
       border-radius: 10px;
       background-color: #ddd;
       cursor: pointer;
+      transition: all 0.3s ease;
     }
+
+    .pad button:hover {
+      background-color: #ccc;
+      transform: scale(1.1);
+    }
+
     .message {
       margin-top: 20px;
       font-size: 24px;
+      color: #333;
     }
+
+    .message.success {
+      color: green;
+      font-weight: bold;
+      animation: successAnimation 1.5s ease-in-out;
+    }
+
+    .message.error {
+      color: red;
+      font-weight: bold;
+      animation: errorAnimation 1.5s ease-in-out;
+    }
+
+    @keyframes successAnimation {
+      0% { transform: scale(0); opacity: 0; }
+      50% { transform: scale(1.2); opacity: 1; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes errorAnimation {
+      0% { transform: scale(0); opacity: 0; }
+      50% { transform: scale(1.2); opacity: 1; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
   </style>
 </head>
 <body>
@@ -40,36 +78,40 @@
   <div class="code-display" id="codeDisplay">••••</div>
 
   <div class="pad">
-    <button onclick="press(1)">1</button>
-    <button onclick="press(2)">2</button>
-    <button onclick="press(3)">3</button>
-    <button onclick="press(4)">4</button>
-    <button onclick="press(5)">5</button>
-    <button onclick="press(6)">6</button>
-    <button onclick="press(7)">7</button>
-    <button onclick="press(8)">8</button>
-    <button onclick="press(9)">9</button>
+    <button onclick="press('A')">A</button>
+    <button onclick="press('B')">B</button>
+    <button onclick="press('C')">C</button>
+    <button onclick="press('D')">D</button>
+    <button onclick="press('E')">E</button>
+    <button onclick="press('F')">F</button>
+    <button onclick="press('G')">G</button>
+    <button onclick="press('H')">H</button>
+    <button onclick="press('I')">I</button>
+    <button onclick="press('1')">1</button>
+    <button onclick="press('3')">3</button>
+    <button onclick="press('6')">6</button>
     <button onclick="clearCode()">←</button>
-    <button onclick="press(0)">0</button>
+    <button onclick="press('1')">1</button>
+    <button onclick="press('A')">A</button>
     <button onclick="checkCode()">OK</button>
   </div>
 
   <div class="message" id="message"></div>
 
   <script>
-    const correctCode = "0922"; // ←ここで好きなコードにしてOK！
+    const correctCode = "Awful1316"; // 正しいパスコード
     let input = "";
 
-    function press(num) {
-      if (input.length < 4) {
-        input += num;
+    function press(char) {
+      if (input.length < 10) {
+        input += char;
         updateDisplay();
       }
     }
 
     function updateDisplay() {
       const dots = input.split('').map(_ => '●').join('');
-      document.getElementById("codeDisplay").textContent = dots.padEnd(4, '•');
+      document.getElementById("codeDisplay").textContent = dots.padEnd(10, '•');
     }
 
     function clearCode() {
@@ -79,10 +121,15 @@
     }
 
     function checkCode() {
+      const messageElement = document.getElementById("message");
       if (input === correctCode) {
-        document.getElementById("message").textContent = "✅ 成功！";
+        messageElement.textContent = "✅ Success! The code is rrmk13!";
+        messageElement.classList.remove("error");
+        messageElement.classList.add("success");
       } else {
-        document.getElementById("message").textContent = "❌ 違うよ！";
+        messageElement.textContent = "❌ Incorrect! Try again.";
+        messageElement.classList.remove("success");
+        messageElement.classList.add("error");
       }
     }
   </script>
