@@ -9,7 +9,7 @@
       font-family: 'Arial', sans-serif;
       background-color: #f0f0f0;
       text-align: center;
-      padding-top: 80px;
+      padding-top: 50px;
     }
 
     .code-display {
@@ -21,9 +21,10 @@
 
     .pad {
       display: grid;
-      grid-template-columns: repeat(3, 80px);
+      grid-template-columns: repeat(10, 60px);
       gap: 10px;
       justify-content: center;
+      margin-top: 30px;
     }
 
     .pad button {
@@ -77,7 +78,9 @@
 
   <div class="code-display" id="codeDisplay">••••</div>
 
+  <!-- iPad風キーボード（A-Z, 0-9, 記号） -->
   <div class="pad">
+    <!-- 英字部分 -->
     <button onclick="press('A')">A</button>
     <button onclick="press('B')">B</button>
     <button onclick="press('C')">C</button>
@@ -87,12 +90,48 @@
     <button onclick="press('G')">G</button>
     <button onclick="press('H')">H</button>
     <button onclick="press('I')">I</button>
+    <button onclick="press('J')">J</button>
+    <button onclick="press('K')">K</button>
+    <button onclick="press('L')">L</button>
+    <button onclick="press('M')">M</button>
+    <button onclick="press('N')">N</button>
+    <button onclick="press('O')">O</button>
+    <button onclick="press('P')">P</button>
+    <button onclick="press('Q')">Q</button>
+    <button onclick="press('R')">R</button>
+    <button onclick="press('S')">S</button>
+    <button onclick="press('T')">T</button>
+    <button onclick="press('U')">U</button>
+    <button onclick="press('V')">V</button>
+    <button onclick="press('W')">W</button>
+    <button onclick="press('X')">X</button>
+    <button onclick="press('Y')">Y</button>
+    <button onclick="press('Z')">Z</button>
+
+    <!-- 数字部分 -->
     <button onclick="press('1')">1</button>
+    <button onclick="press('2')">2</button>
     <button onclick="press('3')">3</button>
+    <button onclick="press('4')">4</button>
+    <button onclick="press('5')">5</button>
     <button onclick="press('6')">6</button>
+    <button onclick="press('7')">7</button>
+    <button onclick="press('8')">8</button>
+    <button onclick="press('9')">9</button>
+    <button onclick="press('0')">0</button>
+    <!-- 記号部分 -->
+    <button onclick="press('!')">!</button>
+    <button onclick="press('@')">@</button>
+    <button onclick="press('#')">#</button>
+    <button onclick="press('$')">$</button>
+    <button onclick="press('%')">%</button>
+    <button onclick="press('^')">^</button>
+    <button onclick="press('&')">&</button>
+    <button onclick="press('*')">*</button>
+    <button onclick="press('(')">(</button>
+    <button onclick="press(')')">)</button>
+
     <button onclick="clearCode()">←</button>
-    <button onclick="press('1')">1</button>
-    <button onclick="press('A')">A</button>
     <button onclick="checkCode()">OK</button>
   </div>
 
